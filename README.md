@@ -1,20 +1,10 @@
-# Bruno Oliveira
-<div><a href="https://www.linkedin.com/in/brunoods-dev/" target="_blank"><img style='width: 50px;' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"></a></div>
+# Olá eu sou, Bruno Oliveira 🤙
+[![instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com) [![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com) [![website](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://site.com) [![whatsapp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://site.com) [![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://site.com)
 
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=brunoods-dev&show_icons=true&theme=tokyonight)
 
+## Tecnologias que uso:
 
-## Hello Devs!
+[![html5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#) [![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#) [![javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)  [![vsc](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](#) 
 
-Tenho 23 anos, moro em Mirassol-SP e estou iniciando no mundo da programação.
-
-## Tecnologias e Ferramentas
-
-<div><img style='width: 170px;' src="https://skills.thijs.gg/icons?i=js,html,css" /></div>
-
-<div> 
-<a></a>
-<a></a>
-<a></a>
-</div>
-
-<div>![snake gif](https://github.com/brunoods-dev/brunoods-dev/blob/output/github-contribution-grid-snake.svg)</div>
+Apaixonado por tecnologia e em busca do um lugar no universo da programação. 💻
