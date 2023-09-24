@@ -1,5 +1,5 @@
 # Bruno Oliveira
-<div><a href="https://www.linkedin.com/in/brunoods-dev/"><img style='width: 50px;' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" h /></a></div>
+<div><a href="https://www.linkedin.com/in/brunoods-dev/" target:'_blank' ><img style='width: 50px;' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" h /></a></div>
 
 
 
