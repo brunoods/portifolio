@@ -16,4 +16,5 @@ Tenho 23 anos, moro em Mirassol-SP e estou iniciando no mundo da programação.
 <a></a>
 <a></a>
 </div>
-![snake gif](https://github.com/brunoods-dev/brunoods-dev/blob/output/github-contribution-grid-snake.svg)
+
+<div>![snake gif](https://github.com/brunoods-dev/brunoods-dev/blob/output/github-contribution-grid-snake.svg)</div>
