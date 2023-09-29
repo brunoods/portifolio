@@ -6,7 +6,7 @@
   <a href="https://www.linkedin.com/in/brunoods-dev" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=brunoods-dev&show_icons=true&theme=tokyonight)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=brunoods&show_icons=true&theme=tokyonight)
 
 ## Tecnologias que uso:
 <div>
