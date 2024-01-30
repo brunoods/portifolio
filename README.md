@@ -1,6 +1,6 @@
 # Bruno Oliveira 🤙
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-407bff?style=flat-square&labelColor=407bff&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunocode/)](https://linkedin.com/in/brunocode)
-[![GitHub](https://img.shields.io/badge/-Github-407bff?style=flat-square&labelColor=407bff&logo=Github&logoColor=white&link=https://www.github.com/brunocodebr)](https://www.github.com/brunocodebr)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-407bff?style=flat-square&labelColor=407bff&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunooliveiradsv/)](https://linkedin.com/in/brunooliveiradsv)
+[![GitHub](https://img.shields.io/badge/-Github-407bff?style=flat-square&labelColor=407bff&logo=Github&logoColor=white&link=https://www.github.com/brunooliveiradsv)](https://www.github.com/brunooliveiradsv)
 
 Oi! Eu sou o Bruno Oliveira, um desenvolvedor Front-End de São José do Rio Preto, Brasil.
 
