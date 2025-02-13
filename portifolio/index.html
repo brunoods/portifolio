@@ -10,6 +10,10 @@
 </head>
 
 <body>
+  <section id="inicio"></section>
+  <video autoplay loop muted playsinline id="background-page1">
+    <source src="/portifolio/background-page1.mp4" type="video/mp4">
+</video>
 
   <header class="topbar">
 
@@ -17,9 +21,9 @@
 
     <nav class="menu">
       <ul>
-        <li><a href="">Sobre nós</a></li>
-        <li><a href="">Planos</a></li>
-        <li><a href="">Cobertura</a></li>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#page2">Planos</a></li>
+        <li><a href="#page3">Cobertura</a></li>
         <li><a href="">Teste de Velocidade</a></li>
         <li><a href="">Sou cliente</a></li>
         <li><a href="">Contato</a></li>
@@ -27,15 +31,56 @@
     </nav>
 
   </header>
-  <main id="page1">
+  <section id="page1">
+    <article id="video">
+      <img src="/portifolio/laptop.png" alt="" width="500px" height="300px">
+      <video autoplay loop muted playsinline id="video-page1">
+        <source src="/portifolio/video-page1.mp4" type="video/mp4">
+      </video>
+    </article>
 
-  </main>
-  <main id="page2">
+    <article id="texto">
+      <h1>Conecte-se com mais velocidade e estabilidade!</h1>
+      <h1>Escolha o plano perfeito para sua casa ou empresa e navegue sem limites. 🚀</h1>
+      <button onclick="window.location.href='#page2'">Conheça nossos planos</button>
+    </article>
 
-  </main>
-  <main id="page3">
+  </section>
+  <section id="page2">
+    <article >
+      <h1>Básico</h1>
+      <h3>Download</h3>
+      <p>250Mb</p>
+      <h3>Upload</h3>
+      <p>125Mb</p>
+      <p>Wi-fi Gratuito</p>
+      <button>Contratar</button>
+    </article>
+    <article >
+      <h1>Essêncial</h1>
+      <h3>Download</h3>
+      <p>350Mb</p>
+      <h3>Upload</h3>
+      <p>175Mb</p>
+      <p>Wi-fi Gratuito</p>
+      <button>Contratar</button>
+    </article>
+    <article>
+      <h1>Turbo</h1>
+      <h3>Download</h3>
+      <p>500Mb</p>
+      <h3>Upload</h3>
+      <p>250Mb</p>
+      <p>Wi-fi Gratuito</p>
+      <button>Contratar</button>
+    </article>
+  </section>
+  <section id="page3">
+    <video autoplay loop muted playsinline id="background-page3">
+      <source src="/portifolio/video-page3.mp4" type="video/mp4">
+  </video>
 
-  </main>
+  </section>
 
 </body>
 
