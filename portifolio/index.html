@@ -12,41 +12,41 @@
 <body>
   <section id="inicio"></section>
   <video autoplay loop muted playsinline id="background-page1">
-    <source src="/portifolio/background-page1.mp4" type="video/mp4">
+    <source src="portifolio/background-page1.mp4" type="video/mp4">
 </video>
 
   <header class="topbar">
 
-    <a href="#"><img id="logotipo" src="/portifolio/logotipo.png" alt="Lazernet Internet Fibra Óptica"></a>
+    <a href="#"><img id="logotipo" src="portifolio/logotipo.png" alt="Lazernet Internet Fibra Óptica"></a>
 
     <nav class="menu">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#page2">Planos</a></li>
-        <li><a href="#page3">Cobertura</a></li>
-        <li><a href="">Teste de Velocidade</a></li>
-        <li><a href="">Sou cliente</a></li>
-        <li><a href="">Contato</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="https://www.speedtest.net/server/lazernet" target="_blank">Teste de Velocidade</a></li>
+        <li><a href="https://www63.bb.com.br/portalbb/boleto/boletos/hc21e,802,3322,10343.bbx?pk_vid=aa5ab29fe0ed68da165911441835082d&pk_vid=aa5ab29fe0ed68da165911441835082d&pk_vid=aa5ab29fe0ed68da165911441835082d" target="_blank">2ª Via do Boleto</a></li>
       </ul>
     </nav>
 
   </header>
-  <section id="page1">
+  <section class="pages" id="home">
     <article id="video">
-      <img src="/portifolio/laptop.png" alt="" width="500px" height="300px">
+      <img src="portifolio/laptop.png" alt="" width="500px" height="300px">
       <video autoplay loop muted playsinline id="video-page1">
-        <source src="/portifolio/video-page1.mp4" type="video/mp4">
+        <source src="portifolio/video-page1.mp4" type="video/mp4">
       </video>
     </article>
 
     <article id="texto">
       <h1>Conecte-se com mais velocidade e estabilidade!</h1>
       <h1>Escolha o plano perfeito para sua casa ou empresa e navegue sem limites. 🚀</h1>
-      <button onclick="window.location.href='#page2'">Conheça nossos planos</button>
+      <button onclick="window.location.href='#planos'">Conheça nossos planos</button>
     </article>
 
   </section>
-  <section id="page2">
+  <section class="pages" id="planos">
     <article >
       <h1>Básico</h1>
       <h3>Download</h3>
@@ -75,11 +75,29 @@
       <button>Contratar</button>
     </article>
   </section>
-  <section id="page3">
+  <section class="pages" id="cobertura">
     <video autoplay loop muted playsinline id="background-page3">
-      <source src="/portifolio/video-page3.mp4" type="video/mp4">
+      <source src="portifolio/video-page3.mp4" type="video/mp4">
   </video>
 
+  </section>
+  <section class="pages" id="contato">
+    <h1>Quer entrar em contato?</h1><br>
+    <main id="caixas">
+    <article id="c1" class="caixa">
+      <h2>Telefone fixo:</h2>
+      <p>(17)3242-7245</p>
+      <h2>E-mail:</h2>
+      <p>atendimento1@lazernet.com.br</p>
+      <h2>Endereço:</h2>
+      <p>R. Aristídes Baccan, 2638 - Santa Casa,<br> Mirassol - SP, 15130-000</p>
+    </article>
+    <h1>Ou</h1>
+    <article id="c2" class="caixa">
+      <h2>Pelo Whatsapp</h2>
+      <button>Conversar</button>
+    </article>
+  </main>
   </section>
 
 </body>
