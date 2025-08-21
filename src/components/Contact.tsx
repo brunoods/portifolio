@@ -1,5 +1,6 @@
 // src/components/Contact.tsx
 import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Importando os ícones
+import Button from './Button'; // 1. Importe o nosso componente Button
 
 export default function Contact() {
   return (
@@ -60,9 +61,10 @@ export default function Contact() {
             </div>
 
             <div className="text-left">
-              <button type="submit" className="bg-accent text-light-bg dark:text-dark-bg font-bold py-3 px-12 rounded-lg hover:opacity-90 transition-opacity">
+              {/* 2. Substituímos o botão antigo pelo nosso componente */}
+              <Button as="button" type="submit">
                 Enviar Mensagem
-              </button>
+              </Button>
             </div>
           </form>
         </div>

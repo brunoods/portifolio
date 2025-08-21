@@ -17,11 +17,17 @@ export interface Project {
 export const projectsData: Project[] = [
   {
     imageUrl: lazernet,
-    title: 'Landing Page para App',
-    description: 'Página de marketing moderna e responsiva para promover o lançamento de um aplicativo mobile.',
-    techs: ['Vite', 'Tailwind CSS', 'Framer Motion'],
+    // O título foi ajustado para ser mais descritivo
+    title: 'Site Institucional - Lazernet',
+    
+    // A descrição agora reflete o site completo que construímos
+    description: 'Página institucional moderna e responsiva para um provedor de internet fibra óptica. O projeto destaca os planos, a área de cobertura interativa e os benefícios da empresa através de um design dinâmico com animações.',
+    
+    // A tecnologia foi corrigida de 'Vite' para 'Next.js'
+    techs: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+    
     liveUrl: 'https://lazernet.vercel.app/',
-    repoUrl: '#',
+    repoUrl: 'https://github.com/brunoods/site-lazernet', // Adicionei o link do repo, se desejar pode deixar '#'
   },
 
 ];

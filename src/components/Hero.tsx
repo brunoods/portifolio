@@ -2,29 +2,33 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Button from './Button';
-import { useTheme } from '../context/ThemeContext'; // 1. Importe o useTheme
 
 export default function Hero() {
-  const { theme } = useTheme(); // 2. Acesse o tema atual ('light' ou 'dark')
   const name = "Bruno Silva";
   const letters = Array.from(name);
 
-  // 3. Expanda as variantes para incluir cores para cada tema
+  const sentenceAnimation: Variants = {
+    hidden: { 
+      opacity: 0 
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.1,
+        staggerChildren: 0.04,
+      },
+    },
+  };
+
   const letterAnimation: Variants = {
-    // Estado para o tema claro
-    light: {
-      color: "#1c1c1c", // Cor light-text
+    hidden: { 
+      opacity: 0,
+      y: -20,
     },
-    // Estado para o tema escuro
-    dark: {
-      color: "#f5f5f5", // Cor dark-text
+    visible: { 
+      opacity: 1,
+      y: 0,
     },
-    hover: {
-      scale: 1.2,
-      y: -8,
-      color: "#0062FF", // Cor accent
-      transition: { duration: 0.5, type: "spring", stiffness: 600, damping: 10 }
-    }
   };
 
   return (
@@ -32,18 +36,17 @@ export default function Hero() {
       <div className="max-w-3xl">
         <motion.h1 
           className="text-6xl md:text-8xl font-serif font-bold mb-4 flex flex-wrap justify-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, staggerChildren: 0.05 }}
+          variants={sentenceAnimation}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
         >
           {letters.map((letter, index) => (
             <motion.span
               key={index}
               variants={letterAnimation}
-              // 4. Diga à animação para usar o estado correspondente ao tema atual
-              animate={theme} 
-              whileHover="hover"
+              // AQUI ESTÁ A CORREÇÃO DEFINITIVA
+              className="text-light-text dark:text-dark-text hover:text-blue-500 dark:hover:text-blue-500 transition-all duration-300 ease-in-out hover:scale-125 hover:-translate-y-2"
             >
               {letter === ' ' ? '\u00A0' : letter}
             </motion.span>
@@ -54,7 +57,7 @@ export default function Hero() {
           className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true }}
         >
           Web Designer & Desenvolvedor Frontend transformando ideias em experiências digitais interativas e modernas.
@@ -63,7 +66,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
           viewport={{ once: true }}
         >
           <Button as="a" href="#projetos">

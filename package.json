@@ -10,9 +10,10 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.7",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
