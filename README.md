@@ -42,7 +42,7 @@
 <table border="1">
   <tr>
     <td width="50%">
-      <h3 align="center">Nome do Projeto 1</h3>
+      <h3 align="center">Portifólio</h3>
       <br />
       <a href="[LINK-PARA-SEU-PROJETO-1]">
         <img src="[LINK-DA-IMAGEM-DO-PROJETO-1]" alt="Nome do Projeto 1" width="100%">
