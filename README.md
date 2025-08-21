@@ -1,7 +1,4 @@
 <div align="center">
-  <a href="https://github.com/brunoods">
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWI5eDUzczZocndjazUxMmlnbXU5Z2ozeW9qNmsydjE3eXY5cHFuZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lQDdDwdZpfYRn1MsJy/giphy.gif" alt="Logo" width="600">
-  </a>
   <h1 align="center">Olá, eu sou Bruno Silva! 👋</h1>
 </div>
 
