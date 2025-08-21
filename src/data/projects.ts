@@ -1,7 +1,7 @@
 // src/data/projects.ts
 
 // 1. IMPORTAMOS AS IMAGENS LOCAIS COMO MÓDULOS
-import projeto2 from '../assets/img/projeto2.png';
+import lazernet from '../assets/img/lazernet.png';
 
 // Definimos o "molde" de como um objeto de projeto deve ser
 export interface Project {
@@ -16,7 +16,7 @@ export interface Project {
 // Este é o ÚNICO lugar que você precisará editar no futuro para atualizar seus projetos!
 export const projectsData: Project[] = [
   {
-    imageUrl: projeto2,
+    imageUrl: lazernet,
     title: 'Landing Page para App',
     description: 'Página de marketing moderna e responsiva para promover o lançamento de um aplicativo mobile.',
     techs: ['Vite', 'Tailwind CSS', 'Framer Motion'],
