@@ -1,41 +1,54 @@
 // src/components/Contact.tsx
 import { useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-// A importação do 'motion' foi removida para evitar conflitos
 
 export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState('');
+
+  // Lê a chave de acesso a partir das variáveis de ambiente
+  const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus('sending');
-    setErrorMessage('');
+    setMessage('');
 
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    formData.append("access_key", ACCESS_KEY);
+    formData.append("subject", `Nova mensagem de ${formData.get("name")} via Portfólio`);
+    formData.append("from_name", "Meu Portfólio");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
     try {
-      const response = await fetch('/api/sendEmail', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: json,
       });
 
-      if (!response.ok) {
-        throw new Error('A resposta da rede não foi OK');
-      }
+      const result = await response.json();
 
-      setStatus('success');
+      if (result.success) {
+        setStatus('success');
+        setMessage('Mensagem enviada com sucesso! Obrigado.');
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setStatus('error');
+        setMessage(result.message || 'Ocorreu um erro. Tente novamente.');
+      }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.');
-      console.error(error);
+      setMessage('Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.');
     }
   }
-
+  
+  // O resto do seu componente continua igual...
   return (
     <section id="contato" className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -86,7 +99,6 @@ export default function Contact() {
             </div>
 
             <div className="text-left">
-              {/* BOTÃO REVERTIDO PARA <button> NORMAL, MAS MANTENDO O ESTILO */}
               <button
                 type="submit" 
                 className="inline-block font-sans font-bold py-3 px-12 rounded-lg transition-all duration-300 bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white hover:shadow-lg hover:shadow-accent/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -97,8 +109,8 @@ export default function Contact() {
             </div>
           </form>
 
-          {status === 'success' && <p className="mt-4 text-green-500">Mensagem enviada com sucesso! Obrigado.</p>}
-          {status === 'error' && <p className="mt-4 text-red-500">{errorMessage}</p>}
+          {status === 'success' && <p className="mt-4 text-green-500">{message}</p>}
+          {status === 'error' && <p className="mt-4 text-red-500">{message}</p>}
         </div>
       </div>
     </section>
