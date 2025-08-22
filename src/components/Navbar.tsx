@@ -11,18 +11,23 @@ export default function Navbar() {
       }`}
     >
       <div className="text-2xl font-serif font-bold text-light-text dark:text-dark-text">
-        <a href="#">Bruno Silva</a>
+        <a href="#" data-cursor-stick>Bruno Silva</a>
       </div>
 
       <div className="flex items-center gap-4">
         <ul className="hidden md:flex space-x-8 text-light-text dark:text-dark-text">
-          <li className="font-medium hover:text-accent cursor-pointer transition-colors duration-300">
+          {/* AQUI ESTÁ A CORREÇÃO:
+            - Removido: cursor-pointer
+            - Adicionado: data-cursor-stick
+          */}
+          <li className="font-medium hover:text-accent transition-colors duration-300" data-cursor-stick>
+            {/* O atributo foi removido do <a> */}
             <a href="#projetos">Projetos</a>
           </li>
-          <li className="font-medium hover:text-accent cursor-pointer transition-colors duration-300">
+          <li className="font-medium hover:text-accent transition-colors duration-300" data-cursor-stick>
             <a href="#sobre">Sobre Mim</a>
           </li>
-          <li className="font-medium hover:text-accent cursor-pointer transition-colors duration-300">
+          <li className="font-medium hover:text-accent transition-colors duration-300" data-cursor-stick>
             <a href="#contato">Contato</a>
           </li>
         </ul>

@@ -1,10 +1,10 @@
 // src/components/TechMemoryGame.tsx
 import { useState, useEffect } from 'react';
-// 1. ÍCONE DE REINICIAR ADICIONADO
-import { SiReact, SiVite, SiNodedotjs, SiTypescript, SiTailwindcss, SiNextdotjs, SiFramer, SiGit, SiPostgresql, SiRedux } from 'react-icons/si';
+import { SiReact, SiVite, SiNodedotjs, SiTypescript, SiTailwindcss, SiNextdotjs, SiFramer, SiGit, SiPostgresql } from 'react-icons/si';
 import { FaRedo } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// ... (o resto do seu código até ao return) ...
 type CardType = {
   id: number;
   icon: React.ComponentType<{ size: number }>;
@@ -13,7 +13,6 @@ type CardType = {
   isMatched: boolean;
 };
 
-// A lista de ícones foi restaurada para 9 para manter a grelha 6x3
 const icons = [
   { icon: SiReact, name: 'React' },
   { icon: SiVite, name: 'Vite' },
@@ -129,7 +128,6 @@ export default function TechMemoryGame() {
       <div className="relative max-w-sm md:max-w-4xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-center md:gap-8">
             
-          {/* 2. NOVO VISUAL PARA O CONTADOR DE JOGADAS */}
           <div className="order-2 md:order-1 mt-8 md:mt-0 md:w-32 text-center">
             <div className="bg-light-bg/50 dark:bg-zinc-900/50 p-4 rounded-lg">
               <span className="text-sm text-gray-500 dark:text-gray-400">JOGADAS</span>
@@ -139,11 +137,16 @@ export default function TechMemoryGame() {
 
           <div className="order-1 md:order-2 grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 p-4 rounded-lg bg-light-bg/50 dark:bg-zinc-900/50 w-full max-w-2xl">
             {cards.map((card, index) => (
-              <div key={card.id} className="perspective-1000" onClick={() => handleCardClick(index)}>
+              <div 
+                key={card.id} 
+                className="perspective-1000 cursor-none" // ADICIONADO cursor-none
+                onClick={() => handleCardClick(index)} 
+                data-cursor-stick
+              >
                 <motion.div
                   className={`relative w-full h-full aspect-square transition-transform duration-700 preserve-3d ${card.isFlipped || card.isMatched ? 'rotate-y-180' : ''}`}
                 >
-                  <div className="absolute w-full h-full backface-hidden flex items-center justify-center rounded-lg bg-gray-300 dark:bg-zinc-700 cursor-pointer hover:scale-105 transition-transform">
+                  <div className="absolute w-full h-full backface-hidden flex items-center justify-center rounded-lg bg-gray-300 dark:bg-zinc-700 hover:scale-105 transition-transform">
                     <span className="text-2xl sm:text-3xl font-bold text-gray-500 dark:text-gray-400">?</span>
                   </div>
                   <div className={`absolute w-full h-full backface-hidden flex items-center justify-center rounded-lg rotate-y-180 ${card.isMatched ? 'bg-green-500/30' : 'bg-accent/20'}`}>
@@ -154,12 +157,12 @@ export default function TechMemoryGame() {
             ))}
           </div>
 
-          {/* 3. NOVO VISUAL PARA O BOTÃO DE REINICIAR */}
           <div className="order-3 md:order-3 mt-8 md:mt-0 md:w-32 text-center">
             <button 
               onClick={resetGame} 
-              className="bg-light-bg/50 dark:bg-zinc-900/50 p-4 rounded-lg group transition-colors hover:bg-accent/20"
+              className="bg-light-bg/50 dark:bg-zinc-900/50 p-4 rounded-lg group transition-colors hover:bg-accent/20 cursor-none" // ADICIONADO cursor-none
               aria-label="Reiniciar Jogo"
+              data-cursor-stick
             >
               <FaRedo size={32} className="text-gray-500 dark:text-gray-400 transition-colors group-hover:text-accent" />
               <span className="mt-2 text-sm font-bold text-gray-500 dark:text-gray-400 transition-colors group-hover:text-accent">REINICIAR</span>
@@ -177,7 +180,11 @@ export default function TechMemoryGame() {
             >
               <h3 className="text-4xl font-serif font-bold text-gradient mb-4">Parabéns!</h3>
               <p className="text-lg text-light-text dark:text-dark-text mb-6">Você encontrou todos os pares em {Math.floor(moves / 2)} jogadas.</p>
-              <button onClick={resetGame} className="font-sans font-bold py-3 px-8 rounded-lg bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white">
+              <button 
+                onClick={resetGame} 
+                className="font-sans font-bold py-3 px-8 rounded-lg bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white cursor-none" // ADICIONADO cursor-none
+                data-cursor-stick
+              >
                 Jogar Novamente
               </button>
             </motion.div>

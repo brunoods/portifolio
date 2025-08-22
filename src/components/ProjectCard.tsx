@@ -33,12 +33,11 @@ export default function ProjectCard(project: Project) {
       <Tilt options={tiltOptions}>
         <div 
           onClick={openModal} 
-          // 1. ADICIONADA A CLASSE aspect-square PARA FORÇAR O FORMATO QUADRADO
-          className="aspect-square bg-light-bg dark:bg-zinc-900 rounded-3xl overflow-hidden flex flex-col group relative shadow-lg dark:shadow-accent/10 cursor-pointer"
+          className="aspect-square bg-light-bg dark:bg-zinc-900 rounded-lg overflow-hidden flex flex-col group relative shadow-lg dark:shadow-accent/10 cursor-pointer"
+          data-cursor-stick
         >
           <div className={theme === 'dark' ? shimmerDark : shimmerLight} />
 
-          {/* 2. IMAGEM AGORA OCUPA 55% DA ALTURA */}
           <div className="relative overflow-hidden h-[55%]">
             <img 
               src={project.imageUrl} 
@@ -50,7 +49,6 @@ export default function ProjectCard(project: Project) {
             </div>
           </div>
           
-          {/* 3. CONTEÚDO OCUPA O RESTO DO ESPAÇO E TEM PADDING AJUSTADO */}
           <div className="p-4 flex flex-col flex-grow z-10 overflow-hidden">
             <h3 className="text-2xl font-serif font-bold mb-1 text-light-text dark:text-dark-text group-hover:text-gradient transition-colors duration-300 truncate">
               {project.title}

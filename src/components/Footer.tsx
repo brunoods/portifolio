@@ -10,10 +10,18 @@ export default function Footer() {
           &copy; {currentYear} Bruno Silva. Todos os direitos reservados.
         </p>
         <div className="flex justify-center gap-6">
-          <a href="https://github.com/brunoods" className="font-medium text-light-text/70 dark:text-dark-text/70 hover:text-accent transition-colors duration-300">
+          <a 
+            href="https://github.com/brunoods" 
+            className="font-medium text-light-text/70 dark:text-dark-text/70 hover:text-accent transition-colors duration-300"
+            data-cursor-stick
+          >
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/brunoods/" className="font-medium text-light-text/70 dark:text-dark-text/70 hover:text-accent transition-colors duration-300">
+          <a 
+            href="https://www.linkedin.com/in/brunoods/" 
+            className="font-medium text-light-text/70 dark:text-dark-text/70 hover:text-accent transition-colors duration-300"
+            data-cursor-stick
+          >
             LinkedIn
           </a>
         </div>

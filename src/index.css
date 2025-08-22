@@ -24,41 +24,42 @@ body {
 }
 
 /* === ESTILOS DA BARRA DE SCROLL === */
-
-/* Para o corpo da barra de scroll */
 ::-webkit-scrollbar {
-  width: 6px; /* Largura da barra */
+  width: 12px;
 }
-
-/* Para o fundo da barra de scroll (a calha) */
 ::-webkit-scrollbar-track {
-  @apply bg-light-bg/50 dark:bg-dark-bg/95; /* Cor de fundo com transparência */
+  @apply bg-light-bg/50 dark:bg-dark-bg/50;
 }
-
-/* Para o manipula-dor da barra de scroll (a parte que se move) */
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-zinc-800; /* Cor do manipula-dor */
-  border-radius: 10px; /* Bordas arredondadas */
+  @apply bg-gray-300 dark:bg-zinc-700;
+  border-radius: 10px;
+  border: 3px solid;
+  @apply border-light-bg dark:border-dark-bg;
 }
-
-/* Efeito ao passar o rato por cima do manipula-dor */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-zinc-900;
+  @apply bg-gray-400 dark:bg-zinc-600;
 }
 
-/* === ESTILOS PARA O JOGO DA MEMÓRIA (EFEITO 3D) === */
+/* === ESTILOS PARA O JOGO DA MEMÓRIA === */
 .perspective-1000 {
   perspective: 1000px;
 }
-
 .preserve-3d {
   transform-style: preserve-3d;
 }
-
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
-
 .backface-hidden {
   backface-visibility: hidden;
+}
+
+/* === ESTILOS DO CURSOR PERSONALIZADO === */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+  a, button, [data-cursor-stick] {
+    cursor: none;
+  }
 }
