@@ -1,9 +1,15 @@
 // src/components/Navbar.tsx
 import ThemeToggle from './ThemeToggle';
+import { useScrollDirection } from '../hooks/useScrollDirection';
 
 export default function Navbar() {
+  const scrollDirection = useScrollDirection();
+
   return (
-    <nav className="w-full font-sans bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-sm p-4 flex justify-between items-center fixed top-0 left-0 z-10 border-b border-light-text/10 dark:border-dark-text/10">
+    <nav className={`w-full font-sans bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-sm p-4 flex justify-between items-center fixed top-0 left-0 z-40 border-b border-light-text/10 dark:border-dark-text/10 transition-transform duration-300 ${
+        scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <div className="text-2xl font-serif font-bold text-light-text dark:text-dark-text">
         <a href="#">Bruno Silva</a>
       </div>

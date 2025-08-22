@@ -1,6 +1,6 @@
 // src/components/About.tsx
 import Marquee from "react-fast-marquee";
-import { useTheme } from '../context/ThemeContext'; // 1. Importe o useTheme
+import { useTheme } from '../context/ThemeContext';
 
 const skills = [
   'HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 
@@ -9,7 +9,11 @@ const skills = [
 ];
 
 export default function About() {
-  const { theme } = useTheme(); // 2. Acesse o tema atual
+  const { theme } = useTheme();
+
+  // Transforma as cores do tema em valores RGBA para transparência
+  const darkGradientColor = 'rgba(10, 10, 10, 0)';   // Preto transparente
+  const lightGradientColor = 'rgba(245, 245, 245, 0)'; // Branco transparente
 
   return (
     <section id="sobre" className="py-20 px-4 md:px-8">
@@ -31,8 +35,9 @@ export default function About() {
       <div className="mt-16">
         <Marquee 
           gradient={true}
-          // 3. Corrija a cor do degradê para usar o tema do contexto
-          gradientColor={theme === 'dark' ? '#0A0A0A' : '#f5f5f5'}
+          // AQUI ESTÁ A CORREÇÃO: Usamos a cor transparente baseada no tema
+          gradientColor={theme === 'dark' ? darkGradientColor : lightGradientColor}
+          gradientWidth={100} // Ajuste a largura do degradê se necessário
           speed={50} 
           pauseOnHover={true}
         >

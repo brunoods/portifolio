@@ -10,3 +10,16 @@ html {
 body {
   overflow-x: hidden;
 }
+
+/* Classes para o fundo animado */
+.animated-gradient-light {
+  @apply bg-gradient-to-r from-light-bg via-gray-200 to-light-bg;
+  background-size: 200% 200%;
+  animation: gradient-bg 10s ease infinite;
+}
+
+.animated-gradient-dark {
+  @apply bg-gradient-to-r from-dark-bg via-gray-900 to-dark-bg;
+  background-size: 200% 200%;
+  animation: gradient-bg 10s ease infinite;
+}
