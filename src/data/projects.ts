@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     description: 'Página institucional moderna e responsiva para um provedor de internet fibra óptica. O projeto destaca os planos, a área de cobertura interativa e os benefícios da empresa através de um design dinâmico com animações.',
     
     // A tecnologia foi corrigida de 'Vite' para 'Next.js'
-    techs: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+    techs: ['React', 'Typescript', 'Node.js', 'Tailwind CSS', 'Framer Motion'],
     
     liveUrl: 'https://lazernet.vercel.app/',
     repoUrl: 'https://github.com/brunoods/site-lazernet', // Adicionei o link do repo, se desejar pode deixar '#'
