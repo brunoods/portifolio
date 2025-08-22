@@ -1,54 +1,10 @@
 // src/components/Contact.tsx
-import { useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Contact() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
-
   // Lê a chave de acesso a partir das variáveis de ambiente
   const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setStatus('sending');
-    setMessage('');
-
-    const formData = new FormData(event.currentTarget);
-    formData.append("access_key", ACCESS_KEY);
-    formData.append("subject", `Nova mensagem de ${formData.get("name")} via Portfólio`);
-    formData.append("from_name", "Meu Portfólio");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json,
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus('success');
-        setMessage('Mensagem enviada com sucesso! Obrigado.');
-        (event.target as HTMLFormElement).reset();
-      } else {
-        setStatus('error');
-        setMessage(result.message || 'Ocorreu um erro. Tente novamente.');
-      }
-    } catch (error) {
-      setStatus('error');
-      setMessage('Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.');
-    }
-  }
-  
-  // O resto do seu componente continua igual...
   return (
     <section id="contato" className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -76,7 +32,17 @@ export default function Contact() {
         </div>
 
         <div className="font-sans">
-          <form onSubmit={handleSubmit}>
+          {/* O formulário agora envia diretamente para a API do Web3Forms */}
+          <form action="https://api.web3forms.com/submit" method="POST">
+            
+            {/* Campos escondidos necessários */}
+            <input type="hidden" name="access_key" value={ACCESS_KEY} />
+            <input type="hidden" name="subject" value="Nova mensagem do Portfólio" />
+            <input type="hidden" name="from_name" value="Meu Portfólio" />
+            {/* Este campo redireciona de volta para a sua página de contacto */}
+            <input type="hidden" name="redirect" value="https://brunoods.github.io/portifolio/#contato" />
+
+
             <div className="relative z-0 mb-8">
               <input type="text" name="name" id="name" className="peer block w-full appearance-none border-0 border-b-2 border-light-text/20 bg-transparent py-2.5 px-0 text-base text-light-text dark:text-dark-text focus:border-accent focus:outline-none focus:ring-0" placeholder=" " required />
               <label htmlFor="name" className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-base text-gray-500 dark:text-gray-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-accent">
@@ -102,15 +68,11 @@ export default function Contact() {
               <button
                 type="submit" 
                 className="inline-block font-sans font-bold py-3 px-12 rounded-lg transition-all duration-300 bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white hover:shadow-lg hover:shadow-accent/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={status === 'sending'}
               >
-                {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
+                Enviar Mensagem
               </button>
             </div>
           </form>
-
-          {status === 'success' && <p className="mt-4 text-green-500">{message}</p>}
-          {status === 'error' && <p className="mt-4 text-red-500">{message}</p>}
         </div>
       </div>
     </section>
