@@ -1,8 +1,40 @@
 // src/components/Contact.tsx
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Importando os ícones
-import Button from './Button'; // 1. Importe o nosso componente Button
+import { useState } from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Contact() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus('sending');
+    setErrorMessage('');
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('A resposta da rede não foi OK');
+      }
+
+      setStatus('success');
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.');
+      console.error(error);
+    }
+  }
+
   return (
     <section id="contato" className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -32,10 +64,7 @@ export default function Contact() {
 
         {/* Coluna da Direita: Formulário */}
         <div className="font-sans">
-          <form 
-            action="https://formspree.io/f/SUA_ID_UNICA_AQUI" 
-            method="POST"
-          >
+          <form onSubmit={handleSubmit}>
             {/* Campo Nome com Label Flutuante */}
             <div className="relative z-0 mb-8">
               <input type="text" name="name" id="name" className="peer block w-full appearance-none border-0 border-b-2 border-light-text/20 bg-transparent py-2.5 px-0 text-base text-light-text dark:text-dark-text focus:border-accent focus:outline-none focus:ring-0" placeholder=" " required />
@@ -61,14 +90,20 @@ export default function Contact() {
             </div>
 
             <div className="text-left">
-              {/* 2. Substituímos o botão antigo pelo nosso componente */}
-              <Button as="button" type="submit">
-                Enviar Mensagem
-              </Button>
+              <button 
+                type="submit" 
+                className="bg-accent text-light-bg dark:text-dark-bg font-bold py-3 px-12 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? 'Enviando...' : 'Enviar Mensagem'}
+              </button>
             </div>
           </form>
-        </div>
 
+          {/* Mensagens de feedback para o usuário */}
+          {status === 'success' && <p className="mt-4 text-green-500">Mensagem enviada com sucesso! Obrigado.</p>}
+          {status === 'error' && <p className="mt-4 text-red-500">{errorMessage}</p>}
+        </div>
       </div>
     </section>
   );
