@@ -1,63 +1,58 @@
-# Nome do Workflow: Aparecerá na aba "Actions" do seu repositório
+# .github/workflows/main.yml
+
 name: Deploy Vite site to Pages
 
-# Gatilhos (Triggers): Quando esta ação deve rodar?
 on:
-  # Roda toda vez que você der um 'push' para a branch 'main'
   push:
     branches: ["main"]
-
-  # Permite que você rode este workflow manualmente pela aba Actions
   workflow_dispatch:
 
-# Permissões: Garante que o workflow tenha as permissões corretas para fazer o deploy
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Configuração de Concorrência: Evita que múltiplos deploys rodem ao mesmo tempo
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
-# Tarefas (Jobs): O que o workflow vai fazer
 jobs:
-  # Tarefa de build: Compila o seu código
   build:
-    runs-on: ubuntu-latest # Usa uma máquina virtual Linux (padrão)
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # 1. Baixa o código do seu repositório
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4 # 2. Configura o ambiente Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20 # Use uma versão recente do Node.js
-          cache: 'npm' # Ativa o cache para acelerar instalações futuras
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
   
+      # AQUI ESTÁ A MUDANÇA IMPORTANTE
       - name: Build project
-        run: npm run build # 4. Roda o script de build para gerar a pasta 'dist'
+        run: npm run build
+        env:
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5 # Prepara o ambiente para o deploy no Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # 5. Envia a pasta 'dist' para ser usada no próximo job
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # O caminho da pasta que foi gerada pelo 'npm run build'
+          path: './dist'
 
-  # Tarefa de deploy: Publica o código compilado no GitHub Pages
   deploy:
-    needs: build # 6. Só roda se a tarefa 'build' for bem-sucedida
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }} # Define a URL de deploy
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # 7. Ação final que publica o site
+        uses: actions/deploy-pages@v4
