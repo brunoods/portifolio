@@ -20,12 +20,12 @@ export default {
       colors: {
         'light-bg': '#f5f5f5',
         'light-text': '#0A0A0A',
-        'dark-bg': '#0A0A0A',
+        'dark-bg': '#000',
         'dark-text': '#f5f5f5',
-        'accent': '#0062FF',
-        'gradient-start': '#0062FF',
-        'gradient-mid': '#6a0dad',
-        'gradient-end': '#e0218a',
+        'accent': '#FD1D1D',
+        'gradient-start': '#833AB4',
+        'gradient-mid': '#FD1D1D',
+        'gradient-end': '#FCB045',
       },
       animation: {
         'gradient-bg': 'gradient-bg 15s ease infinite',

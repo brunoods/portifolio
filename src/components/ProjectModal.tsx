@@ -1,7 +1,6 @@
 // src/components/ProjectModal.tsx
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-// Ícone "X" (Times) adicionado
 import { FaGithub, FaLink, FaTimes } from 'react-icons/fa';
 import type { Project } from '../data/projects';
 
@@ -18,7 +17,6 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
-          enterFrom="opacity-0"
           enterTo="opacity-100"
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
@@ -38,15 +36,14 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              {/* ADICIONADA A CLASSE 'relative' PARA POSICIONAR O BOTÃO 'X' */}
               <Dialog.Panel className="relative w-full max-w-2xl transform overflow-hidden rounded-lg bg-light-bg dark:bg-dark-bg p-6 text-left align-middle shadow-xl transition-all font-sans">
                 
-                {/* NOVO BOTÃO 'X' NO CANTO SUPERIOR DIREITO */}
                 <button
                   type="button"
                   className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
                   onClick={onClose}
                   aria-label="Fechar modal"
+                  data-cursor-stick // ATRIBUTO ADICIONADO AQUI
                 >
                   <FaTimes size={24} />
                 </button>
@@ -70,13 +67,13 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                   </div>
                 </div>
 
-                {/* BOTÕES DE AÇÃO */}
                 <div className="mt-8 flex flex-wrap justify-start items-center gap-4">
                   <a 
                     href={project.liveUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
+                    data-cursor-stick // ATRIBUTO ADICIONADO AQUI
                   >
                     <FaLink />
                     Ver Online
@@ -86,13 +83,13 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-md bg-gray-200 dark:bg-zinc-700 px-4 py-2 text-sm font-bold text-light-text dark:text-dark-text transition-colors hover:bg-gray-300 dark:hover:bg-zinc-600"
+                    data-cursor-stick // ATRIBUTO ADICIONADO AQUI
                   >
                     <FaGithub />
                     Repositório
                   </a>
                 </div>
                 
-                {/* O BOTÃO 'FECHAR' DE TEXTO FOI REMOVIDO DAQUI */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
