@@ -1,10 +1,21 @@
 // src/components/Hero.tsx
 import { motion } from 'framer-motion';
 import Button from './Button';
+import { useTheme } from '../context/ThemeContext'; // 1. IMPORTAR o hook
 
 export default function Hero() {
+  const { theme } = useTheme(); // 2. USAR o hook para obter o tema atual
+
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center text-center p-4">
+    // 3. APLICAR as classes de fundo de forma condicional
+    <section 
+      id="hero" 
+      className={`min-h-screen flex flex-col justify-center items-center text-center p-4 ${
+        theme === 'dark' 
+          ? 'bg-black bg-hero-pattern' 
+          : 'bg-white bg-hero-pattern-light'
+      }`}
+    >
       <div className="max-w-3xl">
         <motion.h1 
           className="text-6xl md:text-8xl font-serif font-bold mb-4 text-gradient"

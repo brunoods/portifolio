@@ -1,22 +1,43 @@
 // src/components/Contact.tsx
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { motion } from 'framer-motion'; // 1. Importar o motion
+
+// 2. Definir as variantes da animação (pode ser reutilizado ou importado de um ficheiro partilhado)
+const variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  },
+};
 
 export default function Contact() {
-  // Lê a chave de acesso a partir das variáveis de ambiente
   const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
   return (
-    <section id="contato" className="py-20 px-4 md:px-8">
+    // Adicionado overflow-hidden para garantir que as animações não causam overflow
+    <section id="contato" className="py-20 px-4 md:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         
-        <div className="font-sans">
-          <h2 className="text-5xl font-serif font-bold mb-6 text-light-text dark:text-dark-text">
+        {/* 3. Animar a coluna da esquerda */}
+        <motion.div 
+          className="font-sans"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ visible: { transition: { staggerChildren: 0.2 }}}} // Anima os filhos em cascata
+        >
+          <motion.h2 variants={variants} className="text-5xl font-serif font-bold mb-6 text-light-text dark:text-dark-text">
             Vamos Conversar.
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+          </motion.h2>
+          <motion.p variants={variants} className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
             Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto em mente, uma pergunta, ou simplesmente quer se conectar, sinta-se à vontade para me contatar.
-          </p>
-          <div className="space-y-4">
+          </motion.p>
+          <motion.div variants={variants} className="space-y-4">
             <h3 className="text-xl font-bold text-light-text dark:text-dark-text">
               Outras formas de me encontrar:
             </h3>
@@ -28,18 +49,22 @@ export default function Contact() {
                 <FaLinkedin size={32} className="text-gray-400 hover:text-accent transition-all duration-300 hover:scale-110" />
               </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="font-sans">
-          {/* O formulário agora envia diretamente para a API do Web3Forms */}
+        {/* 4. Animar a coluna da direita (o formulário) */}
+        <motion.div 
+          className="font-sans"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <form action="https://api.web3forms.com/submit" method="POST">
             
-            {/* Campos escondidos necessários */}
             <input type="hidden" name="access_key" value={ACCESS_KEY} />
             <input type="hidden" name="subject" value="Nova mensagem do Portfólio" />
             <input type="hidden" name="from_name" value="Meu Portfólio" />
-            {/* Este campo redireciona de volta para a sua página de contacto */}
             <input type="hidden" name="redirect" value="https://brunoods.github.io/portifolio/#contato" />
 
 
@@ -73,7 +98,7 @@ export default function Contact() {
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

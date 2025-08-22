@@ -8,6 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { useTheme } from './context/ThemeContext';
+import TechMemoryGame from './components/TechMemoryGame'; // 1. IMPORTE O NOVO COMPONENTE
 
 function App() {
   const { theme } = useTheme();
@@ -28,7 +29,6 @@ function App() {
 
   return (
     <div className={`relative font-sans text-light-text dark:text-dark-text ${backgroundClass}`}>
-      {/* Efeito Aurora */}
       <motion.div
         className="pointer-events-none fixed -inset-px z-30 opacity-40 dark:opacity-60 transition-opacity duration-300"
         style={{
@@ -45,6 +45,12 @@ function App() {
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           <About />
         </motion.div>
+
+        {/* 2. ADICIONE A NOVA SECÇÃO DO JOGO AQUI */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+          <TechMemoryGame />
+        </motion.div>
+
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           <Contact />
         </motion.div>
