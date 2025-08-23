@@ -37,10 +37,11 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
+          {/* AQUI ESTÁ A ALTERAÇÃO: de max-w-sm para max-w-xs */}
           <img 
             src="https://media.licdn.com/dms/image/v2/D4E03AQFJdlhBaOZfUA/profile-displayphoto-shrink_800_800/B4EZS8Pl62HUAg-/0/1738324992491?e=1758758400&v=beta&t=VRl2Z6wqfeOB1opdMmGH0p83aZYv9EIhNFdQQm2xYSQ"
             alt="Foto de perfil de Bruno Silva"
-            className="rounded-lg w-full max-w-sm object-cover shadow-lg"
+            className="rounded-lg w-full max-w-xs object-cover shadow-lg"
           />
         </motion.div>
         <div className="md:col-span-2">
@@ -50,7 +51,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             variants={textVariants}
-            custom={0} // Sem delay
+            custom={0}
           >
             Sobre Mim
           </motion.h2>
@@ -60,9 +61,19 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             variants={textVariants}
-            custom={0.2} // Com 0.2s de delay
+            custom={0.2}
           >
-            Olá! Sou Bruno Silva, um apaixonado por tecnologia e design que encontrou no desenvolvimento frontend a maneira perfeita de unir criatividade e lógica. Com uma sólida experiência em criar interfaces bonitas, intuitivas e responsivas, meu objetivo é sempre entregar a melhor experiência possível para o usuário final.
+            Sou estudante de Análise e Desenvolvimento de Sistemas na Uninove, com foco em expandir meus conhecimentos na área. Minha paixão pela tecnologia me motiva a explorar novas soluções e aprimorar minhas habilidades para enfrentar desafios do mundo real.
+          </motion.p>
+          <motion.p 
+            className="font-sans text-gray-700 dark:text-gray-300 mb-4 leading-relaxed"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={textVariants}
+            custom={0.4}
+          >
+            Estou sempre em busca de aprendizado contínuo e me dedicando ao aperfeiçoamento das minhas habilidades, visando ampliar minhas oportunidades profissionais e me preparar para desafios globais. Acredito que dedicação e inovação são fundamentais para construir uma carreira de sucesso.
           </motion.p>
         </div>
       </div>
