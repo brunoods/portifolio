@@ -41,7 +41,7 @@ export default function About() {
           <img 
             src="https://media.licdn.com/dms/image/v2/D4E03AQFJdlhBaOZfUA/profile-displayphoto-shrink_800_800/B4EZS8Pl62HUAg-/0/1738324992491?e=1758758400&v=beta&t=VRl2Z6wqfeOB1opdMmGH0p83aZYv9EIhNFdQQm2xYSQ"
             alt="Foto de perfil de Bruno Silva"
-            className="rounded-lg w-full max-w-xs object-cover shadow-lg"
+            className="rounded-3xl w-full max-w-64 object-cover shadow-lg"
           />
         </motion.div>
         <div className="md:col-span-2">
