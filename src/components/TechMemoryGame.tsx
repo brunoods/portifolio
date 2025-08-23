@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react';
 import { SiReact, SiVite, SiNodedotjs, SiTypescript, SiTailwindcss, SiNextdotjs, SiFramer, SiGit } from 'react-icons/si';
 import { FaRedo } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { IconType } from 'react-icons';
 
-// CORREÇÃO: O tipo do ícone foi ajustado para aceitar mais propriedades
 type CardType = {
   id: number;
-  icon: React.ComponentType<any>;
+  icon: IconType; // Usar o tipo IconType
   name: string;
   isFlipped: boolean;
   isMatched: boolean;
 };
+// ... (resto do ficheiro igual, não precisa de mais alterações)
 
-// ... (resto do seu código, que já está correto)
 const icons = [
   { icon: SiReact, name: 'React' },
   { icon: SiVite, name: 'Vite' },

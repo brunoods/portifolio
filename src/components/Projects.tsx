@@ -1,7 +1,6 @@
 // src/components/Projects.tsx
 import ProjectCard from './ProjectCard';
 import { projectsData } from '../data/projects';
-// AQUI ESTÁ A CORREÇÃO:
 import { motion, type Variants } from 'framer-motion';
 
 const titleVariants: Variants = {

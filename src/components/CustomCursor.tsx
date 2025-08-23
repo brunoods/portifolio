@@ -1,6 +1,5 @@
 // src/components/CustomCursor.tsx
 import { useState, useEffect } from 'react';
-// AQUI ESTÁ A CORREÇÃO:
 import { motion, type Variants } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -23,7 +22,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [theme]); // Adicionado theme como dependência
 
   const cursorVariants: Variants = {
     default: {

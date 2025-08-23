@@ -1,19 +1,19 @@
 // src/components/About.tsx
 import Marquee from "react-fast-marquee";
 import { useTheme } from '../context/ThemeContext';
-// AQUI ESTÁ A CORREÇÃO:
 import { motion, type Variants } from 'framer-motion';
 
-const variants: Variants = {
+const textVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
+  visible: (delay: number = 0) => ({ 
     opacity: 1, 
     y: 0,
     transition: {
+      delay,
       duration: 0.6,
       ease: "easeOut"
     }
-  },
+  }),
 };
 
 const skills = [
@@ -40,7 +40,7 @@ export default function About() {
           <img 
             src="https://media.licdn.com/dms/image/v2/D4E03AQFJdlhBaOZfUA/profile-displayphoto-shrink_800_800/B4EZS8Pl62HUAg-/0/1738324992491?e=1758758400&v=beta&t=VRl2Z6wqfeOB1opdMmGH0p83aZYv9EIhNFdQQm2xYSQ"
             alt="Foto de perfil de Bruno Silva"
-            className="rounded-lg w-full max-w-xs object-cover shadow-lg"
+            className="rounded-lg w-full max-w-sm object-cover shadow-lg"
           />
         </motion.div>
         <div className="md:col-span-2">
@@ -49,7 +49,8 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            variants={variants}
+            variants={textVariants}
+            custom={0} // Sem delay
           >
             Sobre Mim
           </motion.h2>
@@ -58,7 +59,8 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            variants={{ ...variants, visible: { ...variants.visible, transition: { ...variants.visible.transition, delay: 0.2 }}}}
+            variants={textVariants}
+            custom={0.2} // Com 0.2s de delay
           >
             Olá! Sou Bruno Silva, um apaixonado por tecnologia e design que encontrou no desenvolvimento frontend a maneira perfeita de unir criatividade e lógica. Com uma sólida experiência em criar interfaces bonitas, intuitivas e responsivas, meu objetivo é sempre entregar a melhor experiência possível para o usuário final.
           </motion.p>
