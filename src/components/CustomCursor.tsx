@@ -1,6 +1,7 @@
 // src/components/CustomCursor.tsx
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+// AQUI ESTÁ A CORREÇÃO:
+import { motion, type Variants } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export default function CustomCursor() {
@@ -11,7 +12,6 @@ export default function CustomCursor() {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
-
       const target = e.target as HTMLElement;
       if (target.closest('[data-cursor-stick]')) {
         setIsHoveringInteractive(true);
@@ -19,21 +19,20 @@ export default function CustomCursor() {
         setIsHoveringInteractive(false);
       }
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
-  const cursorVariants = {
+  const cursorVariants: Variants = {
     default: {
       height: 32,
       width: 32,
       x: position.x - 16,
       y: position.y - 16,
-      borderWidth: '2px',
       backgroundColor: 'transparent',
+      borderWidth: '2px',
       borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 98, 255, 0.5)',
       transition: { type: 'spring', stiffness: 500, damping: 30 },
     },
@@ -42,15 +41,14 @@ export default function CustomCursor() {
       width: 60,
       x: position.x - 30,
       y: position.y - 30,
-      borderWidth: '0px',
       backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 98, 255, 0.1)',
+      borderWidth: '0px',
       borderColor: 'transparent',
       transition: { type: 'spring', stiffness: 400, damping: 20 },
     },
   };
 
   return (
-    // AQUI ESTÁ A ALTERAÇÃO: z-50 foi alterado para um valor muito mais alto
     <motion.div
       className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:block"
       variants={cursorVariants}

@@ -1,18 +1,19 @@
 // src/components/TechMemoryGame.tsx
 import { useState, useEffect } from 'react';
-import { SiReact, SiVite, SiNodedotjs, SiTypescript, SiTailwindcss, SiNextdotjs, SiFramer, SiGit, SiPostgresql } from 'react-icons/si';
+import { SiReact, SiVite, SiNodedotjs, SiTypescript, SiTailwindcss, SiNextdotjs, SiFramer, SiGit } from 'react-icons/si';
 import { FaRedo } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ... (o resto do seu código até ao return) ...
+// CORREÇÃO: O tipo do ícone foi ajustado para aceitar mais propriedades
 type CardType = {
   id: number;
-  icon: React.ComponentType<{ size: number }>;
+  icon: React.ComponentType<any>;
   name: string;
   isFlipped: boolean;
   isMatched: boolean;
 };
 
+// ... (resto do seu código, que já está correto)
 const icons = [
   { icon: SiReact, name: 'React' },
   { icon: SiVite, name: 'Vite' },
@@ -22,7 +23,6 @@ const icons = [
   { icon: SiNextdotjs, name: 'Next.js' },
   { icon: SiFramer, name: 'Framer' },
   { icon: SiGit, name: 'Git' },
-  { icon: SiPostgresql, name: 'PostgreSQL' },
 ];
 
 const generateShuffledCards = (): CardType[] => {
@@ -135,11 +135,11 @@ export default function TechMemoryGame() {
             </div>
           </div>
 
-          <div className="order-1 md:order-2 grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 p-4 rounded-lg bg-light-bg/50 dark:bg-zinc-900/50 w-full max-w-2xl">
+          <div className="order-1 md:order-2 grid grid-cols-4 gap-2 sm:gap-4 p-4 rounded-lg bg-light-bg/50 dark:bg-zinc-900/50 w-full max-w-md">
             {cards.map((card, index) => (
               <div 
                 key={card.id} 
-                className="perspective-1000 cursor-none" // ADICIONADO cursor-none
+                className="perspective-1000 cursor-none"
                 onClick={() => handleCardClick(index)} 
                 data-cursor-stick
               >
@@ -160,7 +160,7 @@ export default function TechMemoryGame() {
           <div className="order-3 md:order-3 mt-8 md:mt-0 md:w-32 text-center">
             <button 
               onClick={resetGame} 
-              className="bg-light-bg/50 dark:bg-zinc-900/50 p-4 rounded-lg group transition-colors hover:bg-accent/20 cursor-none" // ADICIONADO cursor-none
+              className="bg-light-bg/50 dark:bg-zinc-900/50 p-4 rounded-lg group transition-colors hover:bg-accent/20 cursor-none"
               aria-label="Reiniciar Jogo"
               data-cursor-stick
             >
@@ -182,7 +182,7 @@ export default function TechMemoryGame() {
               <p className="text-lg text-light-text dark:text-dark-text mb-6">Você encontrou todos os pares em {Math.floor(moves / 2)} jogadas.</p>
               <button 
                 onClick={resetGame} 
-                className="font-sans font-bold py-3 px-8 rounded-lg bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white cursor-none" // ADICIONADO cursor-none
+                className="font-sans font-bold py-3 px-8 rounded-lg bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white cursor-none"
                 data-cursor-stick
               >
                 Jogar Novamente

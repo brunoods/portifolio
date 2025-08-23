@@ -1,9 +1,10 @@
 // src/components/Projects.tsx
 import ProjectCard from './ProjectCard';
 import { projectsData } from '../data/projects';
-import { motion } from 'framer-motion';
+// AQUI ESTÁ A CORREÇÃO:
+import { motion, type Variants } from 'framer-motion';
 
-const titleVariants = {
+const titleVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
   visible: { 
     opacity: 1, 
@@ -15,7 +16,7 @@ const titleVariants = {
   },
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -25,7 +26,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
@@ -40,7 +41,6 @@ const cardVariants = {
 export default function Projects() {
   return (
     <section id="projetos" className="py-20 px-4 md:px-8 overflow-hidden">
-      {/* 1. LARGURA MÁXIMA REDUZIDA */}
       <div className="max-w-5xl mx-auto">
         <motion.h2 
           className="text-5xl font-serif font-bold text-center mb-12 text-light-text dark:text-dark-text"
@@ -52,7 +52,6 @@ export default function Projects() {
           Meus Projetos
         </motion.h2>
         
-        {/* 2. GRELHA CENTRALIZADA */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
           initial="hidden"

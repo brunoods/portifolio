@@ -1,10 +1,10 @@
 // src/components/About.tsx
 import Marquee from "react-fast-marquee";
 import { useTheme } from '../context/ThemeContext';
-import { motion } from 'framer-motion'; // 1. Importar o motion
+// AQUI ESTÁ A CORREÇÃO:
+import { motion, type Variants } from 'framer-motion';
 
-// 2. Definir as variantes da animação
-const variants = {
+const variants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
@@ -28,9 +28,8 @@ export default function About() {
   const lightGradientColor = 'rgba(245, 245, 245, 0)';
 
   return (
-    <section id="sobre" className="py-20 px-4 md:px-8 overflow-hidden"> {/* Adicionado overflow-hidden */}
+    <section id="sobre" className="py-20 px-4 md:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center mb-12">
-        {/* 3. Animar a imagem */}
         <motion.div 
           className="md:col-span-1 flex justify-center"
           initial={{ opacity: 0, x: -50 }}
@@ -41,11 +40,10 @@ export default function About() {
           <img 
             src="https://media.licdn.com/dms/image/v2/D4E03AQFJdlhBaOZfUA/profile-displayphoto-shrink_800_800/B4EZS8Pl62HUAg-/0/1738324992491?e=1758758400&v=beta&t=VRl2Z6wqfeOB1opdMmGH0p83aZYv9EIhNFdQQm2xYSQ"
             alt="Foto de perfil de Bruno Silva"
-            className="rounded-3xl w-full max-w-sm object-cover shadow-lg"
+            className="rounded-lg w-full max-w-xs object-cover shadow-lg"
           />
         </motion.div>
         <div className="md:col-span-2">
-          {/* 4. Animar o título */}
           <motion.h2 
             className="text-5xl font-serif font-bold mb-6 text-light-text dark:text-dark-text"
             initial="hidden"
@@ -55,7 +53,6 @@ export default function About() {
           >
             Sobre Mim
           </motion.h2>
-          {/* 5. Animar o parágrafo */}
           <motion.p 
             className="font-sans text-gray-700 dark:text-gray-300 mb-4 leading-relaxed"
             initial="hidden"
