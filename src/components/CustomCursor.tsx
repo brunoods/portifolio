@@ -22,7 +22,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [theme]); // Adicionado theme como dependência
+  }, []);
 
   const cursorVariants: Variants = {
     default: {
@@ -30,7 +30,7 @@ export default function CustomCursor() {
       width: 32,
       x: position.x - 16,
       y: position.y - 16,
-      backgroundColor: 'transparent',
+      backgroundColor: 'rgba(0, 0, 0, 0)', // CORREÇÃO
       borderWidth: '2px',
       borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 98, 255, 0.5)',
       transition: { type: 'spring', stiffness: 500, damping: 30 },
@@ -42,7 +42,7 @@ export default function CustomCursor() {
       y: position.y - 30,
       backgroundColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 98, 255, 0.1)',
       borderWidth: '0px',
-      borderColor: 'transparent',
+      borderColor: 'rgba(0, 0, 0, 0)', // CORREÇÃO
       transition: { type: 'spring', stiffness: 400, damping: 20 },
     },
   };
