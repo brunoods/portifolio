@@ -8,7 +8,7 @@ export default function Contact() {
 
   // Define o endpoint para o qual o formulário será enviado.
   // Ajuste '/form-endpoint' se o caminho no seu servidor for diferente.
-  const formActionUrl = apiUrl ? `${apiUrl}/form-endpoint` : '';
+  const formActionUrl = apiUrl ? `${apiUrl}/forms/submit` : '';
 
   return (
     <section id="contato" className="py-20 px-4 md:px-8">
