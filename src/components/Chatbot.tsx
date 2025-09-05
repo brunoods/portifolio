@@ -39,16 +39,17 @@ export default function Chatbot() {
 
     try {
       // Verifique se a sua API espera o endpoint '/chat' ou outro.
-      const response = await fetch(`${apiUrl}/chatbot`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          apiKey: apiKey,
-          message: inputValue,
-        }),
-      });
+   const response = await fetch(`${apiUrl}/chatbot`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}` // <-- MUDANÇA IMPORTANTE AQUI
+  },
+  body: JSON.stringify({
+    // A chave de API já não é enviada aqui
+    message: inputValue,
+  }),
+});
 
       if (!response.ok) {
         throw new Error('A resposta da rede não foi bem-sucedida.');
