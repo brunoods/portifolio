@@ -47,7 +47,7 @@ function App() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <TechMemoryGame />
+          
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
