@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import { useTheme } from './context/ThemeContext';
 import TechMemoryGame from './components/TechMemoryGame';
 import CustomCursor from './components/CustomCursor';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const { theme } = useTheme();
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className={`relative font-sans text-light-text dark:text-dark-text ${backgroundClass}`}>
       <CustomCursor />
-      
+      <Chatbot />
       <Navbar />
       <main>
         <Hero />

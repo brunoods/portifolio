@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "framer-motion": "^12.23.12",
     "matter-js": "^0.20.0",
