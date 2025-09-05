@@ -39,7 +39,7 @@ export default function Chatbot() {
 
     try {
       // Verifique se a sua API espera o endpoint '/chat' ou outro.
-      const response = await fetch(`${apiUrl}/chat`, {
+      const response = await fetch(`${apiUrl}/chatbot`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
