@@ -33,37 +33,43 @@ export default function Chatbot() {
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage: Message = { text: inputValue, sender: 'user' };
-    setMessages(prev => [...prev, userMessage]);
+    const currentMessages = [...messages, userMessage];
+    setMessages(currentMessages);
+    const question = inputValue;
     setInputValue('');
     setIsLoading(true);
 
     try {
-      // Verifique se a sua API espera o endpoint '/chat' ou outro.
-   const response = await fetch(`${apiUrl}/chatbot`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}` // <-- MUDANÇA IMPORTANTE AQUI
-  },
-  body: JSON.stringify({
-    // A chave de API já não é enviada aqui
-    message: inputValue,
-  }),
-});
+      // Endpoint correto do seu backend.
+      const response = await fetch(`${apiUrl}/chatbot`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // A FORMA CORRETA DE ENVIAR A CHAVE DE API, de acordo com o seu backend
+          'x-api-key': apiKey 
+        },
+        body: JSON.stringify({
+          // O histórico enviado para a API não inclui a última mensagem do utilizador
+          history: messages.map(m => ({ sender: m.sender, text: m.text })),
+          question: question,
+        }),
+      });
 
       if (!response.ok) {
-        throw new Error('A resposta da rede não foi bem-sucedida.');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'A resposta da rede não foi bem-sucedida.');
       }
 
       const data = await response.json();
       
-      // Assumindo que a sua API devolve um objeto com a propriedade 'reply'
-      const botMessage: Message = { text: data.reply, sender: 'bot' };
+      // Assumindo que a sua API devolve um objeto com a propriedade 'messages'
+      const botResponseText = data.messages.join('\n');
+      const botMessage: Message = { text: botResponseText, sender: 'bot' };
       setMessages(prev => [...prev, botMessage]);
 
     } catch (error) {
       console.error("Erro ao enviar mensagem:", error);
-      const errorMessage: Message = { text: "Desculpe, ocorreu um erro. Tente novamente.", sender: 'bot' };
+      const errorMessage: Message = { text: `Desculpe, ocorreu um erro: ${error.message}`, sender: 'bot' };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
