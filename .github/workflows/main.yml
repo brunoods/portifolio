@@ -36,7 +36,8 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
+          VITE_GEMCONNECT_API_URL: ${{ secrets.VITE_GEMCONNECT_API_URL }}   # <-- ADICIONE ESTA LINHA
+          VITE_GEMCONNECT_API_KEY: ${{ secrets.VITE_GEMCONNECT_API_KEY }}    # <-- E ESTA LINHA
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
