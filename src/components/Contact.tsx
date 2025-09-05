@@ -2,7 +2,13 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Contact() {
-  const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+  // Lê as mesmas variáveis de ambiente
+  const apiUrl = import.meta.env.VITE_GEMCONNECT_API_URL;
+  const apiKey = import.meta.env.VITE_GEMCONNECT_API_KEY;
+
+  // Define o endpoint para o qual o formulário será enviado.
+  // Ajuste '/form-endpoint' se o caminho no seu servidor for diferente.
+  const formActionUrl = apiUrl ? `${apiUrl}/form-endpoint` : '';
 
   return (
     <section id="contato" className="py-20 px-4 md:px-8">
@@ -31,12 +37,14 @@ export default function Contact() {
         </div>
 
         <div className="font-sans">
-          <form action="https://api.web3forms.com/submit" method="POST">
+          <form action={formActionUrl} method="POST">
             
-            <input type="hidden" name="access_key" value={ACCESS_KEY} />
+            {/* Campo oculto para enviar sua API Key de forma segura */}
+            <input type="hidden" name="apiKey" value={apiKey} />
+            
+            {/* Outros campos ocultos que seu sistema possa precisar */}
             <input type="hidden" name="subject" value="Nova mensagem do Portfólio" />
             <input type="hidden" name="from_name" value="Meu Portfólio" />
-            <input type="hidden" name="redirect" value="https://brunoods.github.io/portifolio/#contato" />
 
             <div className="relative z-0 mb-8">
               <input type="text" name="name" id="name" className="peer block w-full appearance-none border-0 border-b-2 border-light-text/20 bg-transparent py-2.5 px-0 text-base text-light-text dark:text-dark-text focus:border-accent focus:outline-none focus:ring-0" placeholder=" " required data-cursor-stick />
