@@ -1,16 +1,86 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bruno Silva | Portifólio WebDesigner</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Meu Portfólio - A Jornada</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <main class="jornada">
+
+        <section class="slide" id="perfil">
+            <div class="perfil-conteudo">
+                <img src="img/avatar.png" alt="Foto de Perfil" class="perfil-foto-grande">
+                <h1>Bruno Oliveira</h1>
+                <p>Desenvolvedor Web Full-Stack 🚀<br>Especialista em criar experiências digitais.</p>
+                <div class="perfil-links">
+                    <a href="mailto:contato@brunooliveirati.com.br" class="btn-link">Email</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn-link">LinkedIn</a>
+                    <a href="https://github.com" target="_blank" class="btn-link">GitHub</a>
+                </div>
+                <div class="indicador-scroll">
+                    <p>Rola para baixo</p>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="grelha">
+            <div class="grelha-conteudo">
+                <h2>Projetos</h2>
+                <p>Clica num projeto para veres a magia acontecer.</p>
+                <div class="perfil-grid-inovador">
+                    
+                    <a href="#projeto-1" class="grid-item-link">
+                        <img src="img/lazernet.svg" alt="Site Lazernet">
+                        <div class="grid-item-titulo">Site Lazernet</div>
+                    </a>
+                    
+                    <a href="#projeto-2" class="grid-item-link">
+                        <img src="img/geminae.svg" alt="Site Geminae">
+                        <div class="grid-item-titulo">Site Geminae</div>
+                    </a>    
+        
+                </div>
+            </div>
+        </section>
+
+        <section class="slide projeto" id="projeto-1">
+            <a href="#grelha" class="btn-voltar-grelha"><i class="fas fa-arrow-up"></i> Voltar à Grelha</a>
+            
+            <video src="videos/lazernet_video.mp4" autoplay muted loop playsinline></video>
+            <div class="info">
+                <h2>Projeto "Site Lazernet"</h2>
+                <p>Tecnologias: PHP, CSS, JavaScript</p>
+                <button class="btn-detalhes" data-modal-target="#modal-projeto-1">
+                    Ver estudo de caso
+                </button>
+            </div>
+        </section>
+
+        <section class="slide projeto" id="projeto-2">
+            <a href="#grelha" class="btn-voltar-grelha"><i class="fas fa-arrow-up"></i> Voltar à Grelha</a>
+            
+            <video src="videos/geminae_video.mp4" autoplay muted lopp playsinline></video>
+            <div class="info">
+                <h2>Projeto "Site Geminae"</h2>
+                <p>Tecnologias: PHP, CSS, JavaScript</p>
+                <button class="btn-detalhes" data-modal-target="#modal-projeto-2">
+                    Ver estudo de caso
+                </button>
+            </div>
+        </section>
+
+
+    </main> <div class="modal" id="modal-projeto-1"> </div>
+    <div class="modal" id="modal-projeto-2"> </div>
+    <div class="modal" id="modal-projeto-3"> </div>
+    <div class="modal" id="modal-projeto-4"> </div>
+
+
+    <script src="script.js"></script>
+</body>
 </html>

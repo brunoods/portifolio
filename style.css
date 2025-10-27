@@ -1,0 +1,448 @@
+/* ======================================== */
+/* === 1. RESET E ESTRUTURA DA JORNADA  === */
+/* ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Esta é a magia da rolagem suave! */
+    /* Faz com que os links <a> com âncoras (#) rolem suavemente */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111; /* Fundo escuro geral */
+    color: #fff;
+    /* Esconde o scroll do body, pois a .jornada vai controlá-lo */
+    overflow: hidden; 
+    line-height: 1.6;
+}
+
+/* O contentor principal da jornada */
+.jornada {
+    height: 100vh; /* Ocupa o ecrã todo */
+    width: 100vw;
+    overflow-y: scroll; /* Permite o scroll vertical */
+    overflow-x: hidden; /* Impede o scroll horizontal */
+    
+    /* A magia do Snap-scroll! */
+    /* Trava (snap) obrigatoriamente no eixo Y */
+    scroll-snap-type: y mandatory;
+}
+
+/* A classe base para CADA slide de ecrã inteiro */
+.slide {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    /* Trava no início de cada slide */
+    scroll-snap-align: start; 
+    overflow: hidden;
+    
+    /* Vamos centrar o conteúdo de slides "estáticos" (Perfil, Grelha) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+/* =================================== */
+/* === 2. ESTILO SLIDE 1: PERFIL   === */
+/* =================================== */
+#perfil {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('caminho/para/imagem-fundo-perfil.jpg');
+    background-size: cover;
+    background-position: center;
+    /* background-color: #1a1a1a; (Alternativa se não quiser imagem) */
+}
+
+.perfil-foto-grande {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+#perfil h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+#perfil p {
+    font-size: 1.2rem;
+    color: #eee;
+    margin-bottom: 30px;
+    max-width: 500px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.perfil-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Para mobile */
+    justify-content: center;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px; /* Botões em "pílula" */
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+/* Indicador para rolar para baixo */
+.indicador-scroll {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+}
+.indicador-scroll p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0;
+}
+.indicador-scroll i {
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+
+/* =================================== */
+/* === 3. ESTILO SLIDE 2: GRELHA   === */
+/* =================================== */
+#grelha {
+    background-color: #222;
+}
+
+.grelha-conteudo {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#grelha h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+#grelha p {
+    color: #ccc;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.perfil-grid-inovador {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+.grid-item-link {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Quadrado perfeito */
+    overflow: hidden;
+    border-radius: 10px;
+    display: block; /* Para <a> ser um bloco */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-decoration: none; /* Remove sublinhado do link */
+}
+
+.grid-item-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.grid-item-titulo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+    padding: 20px 15px 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.grid-item-link:hover {
+    transform: scale(1.05); /* Efeito de "levantar" */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+.grid-item-link:hover img {
+    transform: scale(1.1); /* Zoom na imagem */
+}
+
+/* ===================================== */
+/* === 4. ESTILO SLIDES 3+: PROJETOS === */
+/* ===================================== */
+
+/* A classe .projeto é o nosso slide de feed */
+.slide.projeto {
+    padding: 0; /* Remove o padding dos slides estáticos */
+    background-color: #000;
+    /* Resetamos o 'align-items' para o conteúdo fluir */
+    align-items: stretch; 
+    text-align: left;
+}
+
+.projeto video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Div para projetos com imagem de fundo */
+.projeto-imagem-fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* A "legenda" sobreposta */
+.info {
+    position: relative; 
+    z-index: 10;
+    margin-top: auto; /* Empurra para o fundo */
+    padding: 30px 20px 40px 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    width: 100%;
+}
+.info h2 { font-size: 1.5rem; margin-bottom: 8px; }
+.info p { font-size: 1rem; margin-bottom: 15px; opacity: 0.9; }
+
+.btn-detalhes {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.btn-detalhes:hover {
+    background-color: #f0f0f0;
+}
+
+/* Botão "Voltar para Grelha" */
+.btn-voltar-grelha {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 20;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    background-color: rgba(0,0,0,0.3);
+    padding: 8px 15px;
+    border-radius: 50px;
+}
+.btn-voltar-grelha:hover {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.5);
+}
+.btn-voltar-grelha i {
+    margin-right: 5px;
+}
+
+
+/* =================================== */
+/* === 5. ESTILOS DOS MODALS (Comum) === */
+/* =================================== */
+.modal {
+    position: fixed; /* Fica fixo no ecrã */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Usamos display para esconder/mostrar (controlado por JS) */
+    display: none; 
+    
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000; /* Acima de tudo */
+}
+
+/* Classe que o JavaScript vai adicionar para mostrar o modal */
+.modal.ativo {
+    display: flex;
+}
+
+/* O fundo escuro semitransparente */
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Preto com 70% de opacidade */
+    z-index: 1001; /* Atrás do conteúdo, à frente do site */
+    cursor: pointer; /* Indica que pode ser clicado para fechar */
+}
+
+/* A caixa de conteúdo do modal */
+.modal-conteudo {
+    position: relative;
+    background-color: white;
+    color: #333; /* Texto escuro no modal */
+    padding: 30px;
+    border-radius: 8px;
+    
+    /* Tamanho do modal */
+    width: 90%; /* 90% da largura do ecrã */
+    max-width: 600px; /* Mas no máximo 600px de largura */
+    max-height: 80vh; /* No máximo 80% da altura do ecrã */
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for demasiado grande */
+    
+    z-index: 1002; /* À frente de tudo */
+}
+
+/* Classe que o JavaScript vai adicionar para parar o scroll da jornada */
+/* (Esta classe não existe, é controlada via JS inline) */
+/* Mas, por segurança, podemos ter esta: */
+body.modal-aberto .jornada {
+    overflow-y: hidden;
+}
+
+/* Estilos do conteúdo DENTRO do modal */
+.btn-fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem; /* 32px */
+    color: #aaa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+.btn-fechar-modal:hover {
+    color: #333;
+}
+
+.modal-imagem {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #eee;
+}
+
+.modal-conteudo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #262626;
+}
+
+.modal-conteudo p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-visitar-site {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #007bff; /* Um azul "call to action" */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-visitar-site:hover {
+    background-color: #0056b3;
+}
+
+
+/* =================================== */
+/* === 6. RESPONSIVIDADE (Mobile)  === */
+/* =================================== */
+@media (max-width: 768px) {
+    .slide {
+        padding: 20px; /* Menos padding em ecrãs pequenos */
+    }
+
+    #perfil h1 { font-size: 2rem; }
+    #perfil p { font-size: 1rem; }
+    .perfil-foto-grande { width: 120px; height: 120px; }
+    .btn-link { padding: 8px 15px; font-size: 0.9rem; }
+    
+    #grelha h2 { font-size: 1.8rem; }
+    #grelha p { font-size: 1rem; }
+    .perfil-grid-inovador {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+        gap: 10px;
+    }
+    .grid-item-titulo { font-size: 0.9rem; padding: 10px; }
+
+    .info { padding: 20px 15px 30px 15px; }
+    .info h2 { font-size: 1.3rem; }
+    .info p { font-size: 0.9rem; }
+    .btn-detalhes { padding: 8px 12px; }
+
+    .btn-voltar-grelha {
+        top: 20px;
+        left: 15px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .modal-conteudo {
+        width: 95%; /* Ocupa mais espaço no ecrã */
+        padding: 20px;
+        max-height: 85vh;
+    }
+    .modal-conteudo h1 { font-size: 1.5rem; }
+}
